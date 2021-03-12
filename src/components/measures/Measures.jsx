@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { ALL_IMAGES } from '../../common/constants';
+import { ALL_IMAGES, ALL_IMAGES_PROD } from '../../common/constants';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Image } from './components/Image/Image'
 
@@ -16,7 +16,7 @@ export const Measures = () => {
 
   useEffect(() => {
     const FetchData = async () => {
-      const result = await axios(ALL_IMAGES);
+      const result = await axios(ALL_IMAGES_PROD);
       const { data } = result.data;
 
       setMeasures(data);
