@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { ALL_IMAGES, ALL_IMAGES_PROD } from '../../common/constants';
+import { ALL_IMAGES_PROD } from '../../common/constants';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Image } from './components/Image/Image'
 
@@ -29,7 +29,7 @@ export const Measures = () => {
     <Container className="text-center mt-5">
       <Row>
         <Col>
-          <Button variant="primary" size="lg" onClick={() => RandomImageUrl(measures)}>
+          <Button variant="dark" size="lg" onClick={() => RandomImageUrl(measures)}>
             Сгенерировать измеритель
           </Button>
         </Col>
