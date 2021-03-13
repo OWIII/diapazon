@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { ALL_IMAGES_PROD } from '../../common/constants';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { ALL_IMAGES_DEV, API } from '../../common/constants';
+import { Button, Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Image } from './components/Image/Image'
 
 export const Measures = () => {
   const [measures, setMeasures] = useState([]);
-  const [urlImage, setUrlImage] = useState(null);
+  const [image, setUrlImage] = useState(null);
 
   const RandomImageUrl = (arrayOfImages) => {
-    const url = arrayOfImages[Math.floor(Math.random()*arrayOfImages.length)].img;
-    setUrlImage(url);
+    const image = arrayOfImages[Math.floor(Math.random()*arrayOfImages.length)];
+    console.log(image)
+    setUrlImage(image);
   };
 
   useEffect(() => {
     const FetchData = async () => {
-      const result = await axios('/getMesures');
+      const result = await axios(ALL_IMAGES_DEV);
       const { data } = result.data;
 
       setMeasures(data);
@@ -29,16 +30,18 @@ export const Measures = () => {
     <Container className="text-center mt-5">
       <Row>
         <Col>
-          <Button variant="dark" size="lg" onClick={() => RandomImageUrl(measures)}>
-            Сгенерировать измеритель
-          </Button>
+          {
+            measures.length !== 0 ?
+            <Button variant="dark" size="lg" onClick={() => RandomImageUrl(measures)}>
+              Сгенерировать измеритель
+            </Button> :
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          }
         </Col>
       </Row>
-      { urlImage && <Image
-        src={`https://api.slav-nayka.ru/${urlImage}`}
-        alt={"Alt"}
-      />
-      }
+      { image && <Image {...image}/> }
     </Container>
   )
 }
