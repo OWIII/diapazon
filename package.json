@@ -40,5 +40,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api.slav-nayka.ru"
+  "proxy": "https://api.slav-nayka.ru",
+  "homepage": "https://owiii.github.io/diapazone_build"
 }
