@@ -14,10 +14,10 @@ const App = () => (
         </Nav>
       </Navbar>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Measures />
         </Route>
-        <Route path="/contacts">
+        <Route exact path="/contacts">
           <Contacts />
         </Route>
       </Switch>
