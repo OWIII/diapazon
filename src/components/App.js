@@ -7,21 +7,18 @@ import { Contacts } from "./contacts"
 const App = () => (
   <div className="App">
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand as={NavLink} to="/measures">Diapazone</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">Diapazone</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link as={NavLink} to="/measures">Измеритель</Nav.Link>
+          <Nav.Link as={NavLink} to="/">Измеритель</Nav.Link>
           <Nav.Link as={NavLink} to="/contacts">Контакты</Nav.Link>
         </Nav>
       </Navbar>
       <Switch>
-        <Route path="/measures">
+        <Route path="/">
           <Measures />
         </Route>
         <Route path="/contacts">
           <Contacts />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/measures" />
         </Route>
       </Switch>
   </div>
