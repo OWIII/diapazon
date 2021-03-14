@@ -12,7 +12,6 @@ export const Measures = () => {
 
   const RandomImageUrl = (arrayOfImages) => {
     const image = arrayOfImages[Math.floor(Math.random()*arrayOfImages.length)];
-    console.log(image)
     setUrlImage(image);
   };
 
@@ -34,7 +33,7 @@ export const Measures = () => {
           {
             measures.length !== 0 ?
             <Button variant="dark" size="lg" onClick={() => RandomImageUrl(measures)}>
-              Сгенерировать измеритель
+              Случайный измеритель
             </Button> :
             <Spinner animation="border" role="status">
               <span className="sr-only">Loading...</span>
