@@ -10,6 +10,7 @@
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lodash": "^4.17.21",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
@@ -68,6 +69,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": ["eslint", "pretty-quick --staged", "git add"]
+    "src/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick --staged",
+      "git add"
+    ]
   }
 }
