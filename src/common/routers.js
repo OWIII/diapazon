@@ -1,1 +1,1 @@
-export const getAllImages = "/getMesures";
+export const getAllImages = '/getMesures';
