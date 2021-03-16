@@ -25,7 +25,6 @@ export const RandomImage = () => {
 	};
 
 	const handleChangeCheckBox = (event) => {
-		console.log(event.target);
 		const { checked, id } = event.target;
 		setStateCheckBox({
 			...stateCheckbox,
