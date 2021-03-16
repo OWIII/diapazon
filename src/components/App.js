@@ -1,27 +1,27 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
-import { Measures } from './measures';
+import { RandomImage } from './measures';
 import { Contacts } from './contacts';
 
 const App = () => (
 	<div className="App">
 		<Navbar bg="dark" variant="dark">
-			<Navbar.Brand as={NavLink} to="/">
+			<Navbar.Brand as={NavLink} exact to="/">
 				Diapazone
 			</Navbar.Brand>
 			<Nav className="mr-auto">
-				<Nav.Link as={NavLink} to="/">
+				<Nav.Link as={NavLink} exact to="/">
 					Измеритель
 				</Nav.Link>
-				<Nav.Link as={NavLink} to="/contacts">
+				<Nav.Link as={NavLink} exact to="/contacts">
 					Контакты
 				</Nav.Link>
 			</Nav>
 		</Navbar>
 		<Switch>
 			<Route exact path="/">
-				<Measures />
+				<RandomImage />
 			</Route>
 			<Route exact path="/contacts">
 				<Contacts />

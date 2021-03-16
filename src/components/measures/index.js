@@ -1,1 +1,1 @@
-export { Measures } from './Measures';
+export { RandomImage } from './RandomImage';
