@@ -1,7 +1,7 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
-import { RandomImage } from './measures';
+import { RandomImage } from './randomImage';
 import { Contacts } from './contacts';
 
 const App = () => (

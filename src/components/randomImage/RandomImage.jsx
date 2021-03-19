@@ -1,28 +1,22 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import isEmpty from 'lodash/isEmpty';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
-import { ALL_IMAGES_DEV } from '../../common/constants';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { setIsLoading, callImageRequest } from '../../store/actions/randomImageActions';
 import { getAllImages } from '../../common/routers';
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
+
 import { Image } from './components/Image';
 import { OptionsForm } from './components/OptionsForm/OptionsForm';
 
-export const RandomImage = () => {
-	const [image, setImage] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
 		isCheckedTitle: false,
 		isCheckedImage: false,
 	});
-
-	const randomElementOfArray = (array) => array[Math.floor(Math.random() * array.length)];
-
-	const handleGetImage = () => {
-		setIsLoading((prevState) => {
-			return !prevState;
-		});
-	};
 
 	const handleChangeCheckBox = (event) => {
 		const { checked, id } = event.target;
@@ -32,27 +26,13 @@ export const RandomImage = () => {
 		});
 	};
 
-	useEffect(() => {
-		const FetchData = async () => {
-			const result = await axios(getAllImages);
-			const { data } = result.data;
-
-			setImage(randomElementOfArray(data));
-			setIsLoading(false);
-		};
-
-		if (isLoading) {
-			FetchData();
-		}
-	}, [isLoading]);
-
 	return (
 		<Container className="text-center mt-5">
 			<Row className="col">
 				<Col>
 					<OptionsForm
 						image={image}
-						loadImage={handleGetImage}
+						loadImage={callImageAction}
 						isLoading={isLoading}
 						handleChangeCheckBox={handleChangeCheckBox}
 						{...stateCheckbox}
@@ -71,3 +51,14 @@ export const RandomImage = () => {
 		</Container>
 	);
 };
+
+const mapToStateToProps = (store) => ({
+	...store.image,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	callImageAction: () => dispatch(callImageRequest()),
+	setLoadingAction: (status) => dispatch(setIsLoading(status)),
+});
+
+export default connect(mapToStateToProps, mapDispatchToProps)(RandomImage);
