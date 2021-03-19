@@ -8,12 +8,12 @@ export const setIsLoading = (status) => ({
 	payload: status,
 });
 
-export const getImageRequest = (image) => ({
+export const setImageRequest = (image) => ({
 	type: GET_IMAGE_REQUEST,
 	payload: image,
 });
 
-export const getImageRequestError = (error) => ({
+export const setImageRequestError = (error) => ({
 	type: GET_IMAGE_REQUEST_ERROR,
 	payload: error,
 });

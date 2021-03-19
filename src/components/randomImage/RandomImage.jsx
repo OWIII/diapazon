@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { setIsLoading, callImageRequest } from '../../store/actions/randomImageActions';
-import { getAllImages } from '../../common/routers';
 
 import { Image } from './components/Image';
 import { OptionsForm } from './components/OptionsForm/OptionsForm';

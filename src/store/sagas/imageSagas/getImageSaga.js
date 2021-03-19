@@ -1,29 +1,29 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import * as api from '../../../common/api';
 import { randomElementOfArray } from '../../../common/helpers';
+import { CALL_IMAGE_REQUEST } from '../../actions/randomImageActions';
 
 import {
-	getImageRequest,
-	getImageRequestError,
-	callImageRequest,
+	setImageRequest,
+	setImageRequestError,
 	setIsLoading,
 } from '../../actions/randomImageActions';
 
 function* fetchImage() {
-	console.log('Вызов саги на загрузку img');
-	yield put(setIsLoading(true));
 	try {
-		const image = yield call(api.fetchImage);
-		console.log(image);
+		yield put(setIsLoading(true));
+		const {
+			data: { data },
+		} = yield call(api.fetchImage);
 
-		yield put(getImageRequest(randomElementOfArray(image)));
+		yield put(setImageRequest(randomElementOfArray(data)));
 	} catch (e) {
-		yield put(getImageRequestError(e));
+		yield put(setImageRequestError(e));
 	} finally {
 		yield put(setIsLoading(false));
 	}
 }
 
 export function* getImageSaga() {
-	yield takeEvery(callImageRequest, fetchImage);
+	yield takeEvery(CALL_IMAGE_REQUEST, fetchImage);
 }
