@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { Row, Col, Alert } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
+import isNil from 'lodash/isNil';
+
 import { API } from '../../../../common/constants';
 import { ImageViewer } from './ImageViewer';
-import isNil from 'lodash/isNil';
 
 export const Image = ({ img, alt, title, isCheckedTitle, isCheckedImage }) => {
 	const [viewerIsOpen, setState] = useState(false);

@@ -1,4 +1,5 @@
-import { Form, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import isNil from 'lodash/isNil';
 
 export const OptionsForm = ({
@@ -8,6 +9,8 @@ export const OptionsForm = ({
 	isCheckedTitle,
 	image,
 }) => {
+	const handleLoadImage = () => loadImage();
+
 	return (
 		<Form className="dark text-left">
 			<Form.Group controlId="showName">
@@ -29,7 +32,7 @@ export const OptionsForm = ({
 				/>
 			</Form.Group>
 			<Form.Group>
-				<Button variant="success" onClick={() => loadImage(true)}>
+				<Button variant="success" onClick={handleLoadImage}>
 					{!isNil(image) ? 'Обновить' : 'Загрузить'}
 				</Button>
 			</Form.Group>
