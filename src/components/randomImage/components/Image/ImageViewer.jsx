@@ -1,6 +1,7 @@
 import ImgsViewer from 'react-images-viewer';
+import PropTypes from 'prop-types';
 
-export const ImageViewer = ({ viewerIsOpen, seState, api, isOpen, img, alt }) => {
+export const ImageViewer = ({ seState, api, isOpen, img, alt }) => {
 	return (
 		<ImgsViewer
 			imgs={[{ src: `${api}${img}`, alt: { alt } }]}
@@ -11,4 +12,12 @@ export const ImageViewer = ({ viewerIsOpen, seState, api, isOpen, img, alt }) =>
 			showImgCount={false}
 		/>
 	);
+};
+
+ImageViewer.propTypes = {
+	seState: PropTypes.func,
+	api: PropTypes.string,
+	isOpen: PropTypes.bool,
+	img: PropTypes.string,
+	alt: PropTypes.string,
 };

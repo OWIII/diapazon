@@ -1,6 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import isNil from 'lodash/isNil';
+import PropTypes from 'prop-types';
 
 export const OptionsForm = ({
 	loadImage,
@@ -38,4 +39,12 @@ export const OptionsForm = ({
 			</Form.Group>
 		</Form>
 	);
+};
+
+OptionsForm.propTypes = {
+	loadImage: PropTypes.func,
+	handleChangeCheckBox: PropTypes.func,
+	isCheckedImage: PropTypes.bool,
+	isCheckedTitle: PropTypes.bool,
+	image: PropTypes.object,
 };

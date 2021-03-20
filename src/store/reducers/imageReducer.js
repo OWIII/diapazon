@@ -1,25 +1,23 @@
 import { initialState } from '../initialState';
+import { createReducer } from 'redux-act';
+import { setImageError, setIsLoading, setImage } from '../actions';
 
 const { initialStateImage } = initialState;
 
-export const imageReducer = (state = initialStateImage, action) => {
-	switch (action.type) {
-		case 'GET_IMAGE_REQUEST':
-			return {
-				...state,
-				image: action.payload,
-			};
-		case 'GET_IMAGE_REQUEST_ERROR':
-			return {
-				...state,
-				error: action.payload,
-			};
-		case 'SET_LOADING':
-			return {
-				...state,
-				isLoading: action.payload,
-			};
-		default:
-			return state;
-	}
-};
+export const imageReducer = createReducer(
+	{
+		[setIsLoading]: (state, payload) => ({
+			...state,
+			isLoading: payload,
+		}),
+		[setImage]: (state, payload) => ({
+			...state,
+			image: payload,
+		}),
+		[setImageError]: (state, payload) => ({
+			...state,
+			error: payload,
+		}),
+	},
+	initialStateImage,
+);

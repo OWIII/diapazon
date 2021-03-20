@@ -5,11 +5,12 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { setIsLoading, callImageRequest } from '../../store/actions/randomImageActions';
+import { setIsLoading, getImage } from '../../store/actions';
 
 import { Image } from './components/Image';
-import { OptionsForm } from './components/OptionsForm/OptionsForm';
+import { OptionsForm } from './components';
 
 const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
@@ -51,12 +52,19 @@ const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) =>
 	);
 };
 
+RandomImage.propTypes = {
+	image: PropTypes.object,
+	isLoading: PropTypes.bool,
+	callImageAction: PropTypes.func,
+	setLoadingAction: PropTypes.func,
+};
+
 const mapToStateToProps = (store) => ({
 	...store.image,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	callImageAction: () => dispatch(callImageRequest()),
+	callImageAction: () => dispatch(getImage()),
 	setLoadingAction: (status) => dispatch(setIsLoading(status)),
 });
 

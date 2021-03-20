@@ -1,13 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import * as api from '../../../common/api';
-import { randomElementOfArray } from '../../../common/helpers';
-import { CALL_IMAGE_REQUEST } from '../../actions/randomImageActions';
-
-import {
-	setImageRequest,
-	setImageRequestError,
-	setIsLoading,
-} from '../../actions/randomImageActions';
+import * as api from '../../../common';
+import { randomElementOfArray } from '../../../common';
+import { getImage, setImageError, setIsLoading, setImage } from '../../actions';
 
 function* fetchImage() {
 	try {
@@ -16,14 +10,14 @@ function* fetchImage() {
 			data: { data },
 		} = yield call(api.fetchImage);
 
-		yield put(setImageRequest(randomElementOfArray(data)));
+		yield put(setImage(randomElementOfArray(data)));
 	} catch (e) {
-		yield put(setImageRequestError(e));
+		yield put(setImageError(e));
 	} finally {
 		yield put(setIsLoading(false));
 	}
 }
 
 export function* getImageSaga() {
-	yield takeEvery(CALL_IMAGE_REQUEST, fetchImage);
+	yield takeEvery(getImage.getType(), fetchImage);
 }
