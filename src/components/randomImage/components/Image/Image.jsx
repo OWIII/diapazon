@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Alert from 'react-bootstrap/Alert';
 import isNil from 'lodash/isNil';
+import PropTypes from 'prop-types';
 
-import { API } from '../../../../common/constants';
+import { API, showAlert } from '../../../../common';
 import { ImageViewer } from './ImageViewer';
 
 export const Image = ({ img, alt, title, isCheckedTitle, isCheckedImage }) => {
@@ -21,7 +21,7 @@ export const Image = ({ img, alt, title, isCheckedTitle, isCheckedImage }) => {
 			<Col className="text-left">
 				{!isNil(img) ? (
 					<>
-						{isCheckedTitle && <Alert variant="success">{title}</Alert>}
+						{isCheckedTitle && showAlert(title, 'success')}
 						{isCheckedImage && (
 							<div className="measures__wrapper mt-2">
 								<img
@@ -34,11 +34,12 @@ export const Image = ({ img, alt, title, isCheckedTitle, isCheckedImage }) => {
 						)}
 					</>
 				) : (
-					<Alert variant="dark">Данных для отображения нет</Alert>
+					showAlert('Данных для отображения нет', 'dark')
 				)}
-				{!isNil(img) && !isCheckedTitle && !isCheckedImage && (
-					<Alert variant="warning">Вы не выбрали ни один параметр для показа</Alert>
-				)}
+				{!isNil(img) &&
+					!isCheckedTitle &&
+					!isCheckedImage &&
+					showAlert('Вы не выбрали ни один параметр для показа', 'warning')}
 			</Col>
 			<ImageViewer
 				isOpen={viewerIsOpen}
@@ -49,4 +50,12 @@ export const Image = ({ img, alt, title, isCheckedTitle, isCheckedImage }) => {
 			/>
 		</Row>
 	);
+};
+
+Image.propTypes = {
+	img: PropTypes.string,
+	alt: PropTypes.string,
+	title: PropTypes.string,
+	isCheckedTitle: PropTypes.bool,
+	isCheckedImage: PropTypes.bool,
 };

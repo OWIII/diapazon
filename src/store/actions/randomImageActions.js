@@ -1,23 +1,6 @@
-export const SET_LOADING = 'SET_LOADING';
-export const GET_IMAGE_REQUEST = 'GET_IMAGE_REQUEST';
-export const GET_IMAGE_REQUEST_ERROR = 'GET_IMAGE_REQUEST_ERROR';
-export const CALL_IMAGE_REQUEST = 'CALL_IMAGE_REQUEST';
+import { createAction } from 'redux-act';
 
-export const setIsLoading = (status) => ({
-	type: SET_LOADING,
-	payload: status,
-});
-
-export const setImageRequest = (image) => ({
-	type: GET_IMAGE_REQUEST,
-	payload: image,
-});
-
-export const setImageRequestError = (error) => ({
-	type: GET_IMAGE_REQUEST_ERROR,
-	payload: error,
-});
-
-export const callImageRequest = () => ({
-	type: CALL_IMAGE_REQUEST,
-});
+export const setIsLoading = createAction('SET_IS_LOADING');
+export const setImage = createAction('SET_IMAGE');
+export const setImageError = createAction('SET_IMAGE_ERROR');
+export const getImage = createAction('GET_IMAGE');
