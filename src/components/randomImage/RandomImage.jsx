@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
 
 import { setIsLoading, getImage } from '../../store/actions';
 
-import { Image } from './components/Image';
+import { Image } from './components';
 import { OptionsForm } from './components';
+import { NavBar } from '../navbar';
 
 const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
@@ -27,28 +28,31 @@ const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) =>
 	};
 
 	return (
-		<Container className="text-center mt-5">
-			<Row className="col">
-				<Col>
-					<OptionsForm
-						image={image}
-						loadImage={callImageAction}
-						isLoading={isLoading}
-						handleChangeCheckBox={handleChangeCheckBox}
-						{...stateCheckbox}
-					/>
-				</Col>
-				<Col>
-					{isLoading ? (
-						<Spinner animation="border" role="status">
-							<span className="sr-only">Loading...</span>
-						</Spinner>
-					) : (
-						<Image {...image} {...stateCheckbox} />
-					)}
-				</Col>
-			</Row>
-		</Container>
+		<>
+			<NavBar showMenu={true} />
+			<Container className="text-center mt-5">
+				<Row className="col">
+					<Col>
+						<OptionsForm
+							image={image}
+							loadImage={callImageAction}
+							isLoading={isLoading}
+							handleChangeCheckBox={handleChangeCheckBox}
+							{...stateCheckbox}
+						/>
+					</Col>
+					<Col>
+						{isLoading ? (
+							<Spinner animation="border" role="status">
+								<span className="sr-only">Loading...</span>
+							</Spinner>
+						) : (
+							<Image {...image} {...stateCheckbox} />
+						)}
+					</Col>
+				</Row>
+			</Container>
+		</>
 	);
 };
 
