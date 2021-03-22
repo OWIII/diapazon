@@ -1,6 +1,7 @@
-import { initialState } from '../initialState';
 import { createReducer } from 'redux-act';
+
 import { setImageError, setIsLoading, setImage } from '../actions';
+import { initialState } from '../initialState';
 
 const { initialStateImage } = initialState;
 

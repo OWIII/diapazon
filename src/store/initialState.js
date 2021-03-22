@@ -6,5 +6,10 @@ export const initialState = {
 	},
 	initialStateAuth: {
 		isLogged: false,
+		email: '',
+		password: '',
+		error: false,
+		textError: '',
+		data: null,
 	},
 };

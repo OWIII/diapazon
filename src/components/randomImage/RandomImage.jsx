@@ -13,7 +13,7 @@ import { Image } from './components';
 import { OptionsForm } from './components';
 import { NavBar } from '../navbar';
 
-const RandomImage = ({ image, isLoading, callImageAction, setLoadingAction }) => {
+const RandomImage = ({ image, isLoading, callImageAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
 		isCheckedTitle: false,
 		isCheckedImage: false,
