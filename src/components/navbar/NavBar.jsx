@@ -1,8 +1,8 @@
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/NavBar';
+import { Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-export const NavBar = ({ showMenu }) => (
+export const NavBarComponent = ({ showMenu }) => (
 	<Navbar bg="dark" variant="dark">
 		<Navbar.Brand as={NavLink} exact to="/">
 			Diapazone
