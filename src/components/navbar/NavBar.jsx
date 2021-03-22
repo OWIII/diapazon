@@ -1,6 +1,6 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/NavBar';
-import NavLink from 'react-router-dom/NavLink';
+import { NavLink } from 'react-router-dom';
 
 export const NavBar = ({ showMenu }) => (
 	<Navbar bg="dark" variant="dark">
