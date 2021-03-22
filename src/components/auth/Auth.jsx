@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { NavBar } from '../navbar';
+import { NavBarComponent } from '../navbar';
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setUserDataForm, signIn } from '../../store/actions';
@@ -40,7 +40,7 @@ const Auth = ({ signInAction, setUserDataFormAction, isLogged }) => {
 
 	return (
 		<>
-			<NavBar showMenu={false} />
+			<NavBarComponent showMenu={false} />
 			<Container className="mt-5">
 				<Row className="justify-content-md-center">
 					<Col className="col-md-8 col-sm-12 col-lg-6 col-xl-4">

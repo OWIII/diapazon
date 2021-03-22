@@ -11,7 +11,7 @@ import { setIsLoading, getImage } from '../../store/actions';
 
 import { Image } from './components';
 import { OptionsForm } from './components';
-import { NavBar } from '../navbar';
+import { NavBarComponent } from '../navbar';
 
 const RandomImage = ({ image, isLoading, callImageAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
@@ -29,7 +29,7 @@ const RandomImage = ({ image, isLoading, callImageAction }) => {
 
 	return (
 		<>
-			<NavBar showMenu={true} />
+			<NavBarComponent showMenu={true} />
 			<Container className="text-center mt-5">
 				<Row className="col">
 					<Col>

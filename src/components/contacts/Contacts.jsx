@@ -3,12 +3,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 
-import { NavBar } from '../navbar';
+import { NavBarComponent } from '../navbar';
 
 export const Contacts = () => {
 	return (
 		<>
-			<NavBar showMenu={true} />
+			<NavBarComponent showMenu={true} />
 			<Container>
 				<Row>
 					<Col>
