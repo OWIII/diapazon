@@ -18,13 +18,13 @@ const Auth = ({ signInAction, setUserDataFormAction, isLogged }) => {
 
 	useEffect(() => {
 		setUserDataFormAction(stateForm);
-	}, [stateForm]);
+	}, [stateForm, setUserDataFormAction]);
 
 	useEffect(() => {
 		if (isLogged) {
 			history.push('/');
 		}
-	}, [isLogged]);
+	}, [isLogged, history]);
 
 	const handleInputChange = ({ target: { id, value } }) => {
 		setStateForm({

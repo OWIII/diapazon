@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-act';
 
 import { initialState } from '../initialState';
-import { setUserData, setUserDataForm, signInError, signIn } from '../actions';
+import { setUserData, setUserDataForm, signInError } from '../actions';
 
 const { initialStateAuth } = initialState;
 
