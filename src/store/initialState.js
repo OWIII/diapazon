@@ -4,5 +4,12 @@ export const initialState = {
 		isLoading: false,
 		error: null,
 	},
-	initialStateVK: {},
+	initialStateAuth: {
+		isLogged: false,
+		email: '',
+		password: '',
+		error: false,
+		textError: '',
+		data: null,
+	},
 };

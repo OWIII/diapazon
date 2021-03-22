@@ -1,33 +1,36 @@
-import { Navbar, Nav } from 'react-bootstrap';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { RandomImage } from './randomImage';
 import { Contacts } from './contacts';
+import { Auth } from './auth';
+import * as firebase from 'firebase';
+import { PrivateRoute } from './privareRouter';
 
-const App = () => (
-	<div className="App">
-		<Navbar bg="dark" variant="dark">
-			<Navbar.Brand as={NavLink} exact to="/">
-				Diapazone
-			</Navbar.Brand>
-			<Nav className="mr-auto">
-				<Nav.Link as={NavLink} exact to="/">
-					Измеритель
-				</Nav.Link>
-				<Nav.Link as={NavLink} exact to="/contacts">
-					Контакты
-				</Nav.Link>
-			</Nav>
-		</Navbar>
-		<Switch>
-			<Route exact path="/">
-				<RandomImage />
-			</Route>
-			<Route exact path="/contacts">
-				<Contacts />
-			</Route>
-		</Switch>
-	</div>
-);
+const App = ({ isLogged }) => {
+	console.log(isLogged);
 
-export default App;
+	useEffect(() => {
+		const db = firebase.default.database();
+		console.log(db);
+	}, []);
+
+	return (
+		<div className="App">
+			<Switch>
+				<PrivateRoute exact auth={isLogged} path="/" component={() => <RandomImage />} />
+				<PrivateRoute exact auth={isLogged} path="/contacts" component={() => <Contacts />} />
+				<Route exact path="/auth">
+					<Auth />
+				</Route>
+			</Switch>
+		</div>
+	);
+};
+
+const mapStateToProps = (store) => ({
+	...store.auth,
+});
+
+export default connect(mapStateToProps)(App);
