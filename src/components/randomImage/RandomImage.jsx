@@ -7,13 +7,13 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { setIsLoading, getImage } from '../../store/actions';
+import { setIsLoading, getImage, signOut } from '../../store/actions';
 
 import { Image } from './components';
 import { OptionsForm } from './components';
 import { NavBarComponent } from '../navbar';
 
-const RandomImage = ({ image, isLoading, callImageAction }) => {
+const RandomImage = ({ image, isLoading, callImageAction, signOutAction }) => {
 	const [stateCheckbox, setStateCheckBox] = useState({
 		isCheckedTitle: false,
 		isCheckedImage: false,
@@ -29,7 +29,7 @@ const RandomImage = ({ image, isLoading, callImageAction }) => {
 
 	return (
 		<>
-			<NavBarComponent showMenu={true} />
+			<NavBarComponent signOut={signOutAction} showMenu={true} />
 			<Container className="text-center mt-5">
 				<Row className="col">
 					<Col>
@@ -61,6 +61,7 @@ RandomImage.propTypes = {
 	isLoading: PropTypes.bool,
 	callImageAction: PropTypes.func,
 	setLoadingAction: PropTypes.func,
+	signOut: PropTypes.func,
 };
 
 const mapToStateToProps = (store) => ({
@@ -70,6 +71,7 @@ const mapToStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
 	callImageAction: () => dispatch(getImage()),
 	setLoadingAction: (status) => dispatch(setIsLoading(status)),
+	signOutAction: (payload) => dispatch(signOut(payload)),
 });
 
 export default connect(mapToStateToProps, mapDispatchToProps)(RandomImage);

@@ -1,12 +1,15 @@
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import get from 'lodash/get';
 
 import { RandomImage } from './randomImage';
 import { Contacts } from './contacts';
 import { Auth } from './auth';
 import { PrivateRoute } from './privareRouter';
 
-const App = ({ isLogged }) => {
+const storage = localStorage.getItem('state');
+const isLogged = get(JSON.parse(storage), 'auth.isLogged', false);
+
+const App = () => {
 	return (
 		<div className="App">
 			<Switch>
@@ -20,8 +23,4 @@ const App = ({ isLogged }) => {
 	);
 };
 
-const mapStateToProps = (store) => ({
-	...store.auth,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

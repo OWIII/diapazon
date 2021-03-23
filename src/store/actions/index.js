@@ -1,2 +1,2 @@
 export { setIsLoading, setImage, setImageError, getImage } from './randomImageActions';
-export { signIn, setUserDataForm, signInError, setUserData } from './authAction';
+export { signIn, signOut, setUserDataForm, signInError, setUserData } from './authAction';

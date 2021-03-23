@@ -1,7 +1,7 @@
 import { fork, all } from 'redux-saga/effects';
 import { getImageSaga } from './imageSagas';
-import { authSaga } from './AuthSagas';
+import { authSaga, signOutSaga } from './AuthSagas';
 
 export default function* rootSaga() {
-	yield all([getImageSaga, authSaga].map(fork));
+	yield all([getImageSaga, authSaga, signOutSaga].map(fork));
 }
