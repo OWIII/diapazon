@@ -1,7 +1,7 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects';
 import * as firebase from 'firebase';
 
-import { setUserData, signInError, signIn } from '../../actions';
+import { setUserData, signInError, signIn, signOut } from '../../actions';
 
 function* authFirebase() {
 	const selectAllState = (state) => state;
@@ -22,6 +22,25 @@ function* authFirebase() {
 	}
 }
 
+function* signOutFirebase(action) {
+	try {
+		const history = action.payload;
+		const auth = firebase.default.auth();
+
+		yield call([auth, auth.signOut]);
+		yield put(setUserData({ isLogged: false, data: null }));
+
+		history.push('/auth');
+	} catch (error) {
+		yield put(signInError({ error: true, textError: error.message }));
+	} finally {
+	}
+}
+
 export function* authSaga() {
 	yield takeEvery(signIn.getType(), authFirebase);
+}
+
+export function* signOutSaga() {
+	yield takeEvery(signOut.getType(), signOutFirebase);
 }

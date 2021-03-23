@@ -2,13 +2,17 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { NavBarComponent } from '../navbar';
 
-export const Contacts = () => {
+import { signOut } from '../../store/actions';
+
+const Contacts = ({ signOutAction }) => {
 	return (
 		<>
-			<NavBarComponent showMenu={true} />
+			<NavBarComponent signOut={signOutAction} showMenu={true} />
 			<Container>
 				<Row>
 					<Col>
@@ -21,3 +25,13 @@ export const Contacts = () => {
 		</>
 	);
 };
+
+Contacts.propTypes = {
+	signOut: PropTypes.func,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	signOutAction: (payload) => dispatch(signOut(payload)),
+});
+
+export default connect(null, mapDispatchToProps)(Contacts);

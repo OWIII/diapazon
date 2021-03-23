@@ -1,1 +1,1 @@
-export { authSaga } from './AuthSaga';
+export { authSaga, signOutSaga } from './AuthSaga';
