@@ -26,6 +26,13 @@ export const NavBarComponent = ({ showMenu, signOut }) => {
 							Измеритель
 						</Nav.Link>
 						<Nav.Link
+							className={history.location.pathname === '/randomVk' ? 'active' : ''}
+							as={Link}
+							to="/randomVk"
+						>
+							РандомВК
+						</Nav.Link>
+						<Nav.Link
 							className={history.location.pathname === '/contacts' ? 'active' : ''}
 							as={Link}
 							to="/contacts"
